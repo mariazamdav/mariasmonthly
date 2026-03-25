@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maria's monthly — march 26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --ink: #1a1a18;
+      --mid: #7a7870;
+      --accent: #c9b99a;
+      --rule: #e2ddd7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      min-height: 100vh;
+      padding: 0 0 6rem;
+    }
+
+    /* HEADER */
+    header {
+      padding: 4rem 2rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .issue-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em { font-style: italic; font-weight: 300; }
+
+    /* MAIN */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 em { font-style: italic; }
+
+    .body-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: var(--ink);
+      max-width: 580px;
+    }
+
+    .body-text p + p { margin-top: 1em; }
+
+    /* SLIDESHOW */
+    .slideshow { margin-top: 2.5rem; }
+
+    .slide-track {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: var(--rule);
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide.active { opacity: 1; }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-placeholder span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .slide-caption {
+      margin-top: 0.8rem;
+      min-height: 1.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    .slide-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .slide-btn {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .slide-btn:hover { border-color: var(--accent); }
+    .slide-btn:disabled { opacity: 0.25; cursor: default; border-color: var(--rule); }
+
+    .slide-counter {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--mid);
+      letter-spacing: 0.08em;
+    }
+
+    /* SPOTIFY BUTTON */
+    .spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+      padding: 0.65rem 1.2rem;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .spotify-btn:hover { border-color: var(--accent); background: #fff; }
+
+    .spotify-btn svg { width: 14px; height: 14px; fill: #1DB954; flex-shrink: 0; }
+
+    /* PLAYLIST */
+    .playlist { list-style: none; }
+
+    .playlist li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .playlist li:last-child { border-bottom: none; }
+
+    .track-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--accent);
+      min-width: 1.4rem;
+    }
+
+    .track-info { flex: 1; }
+
+    .track-title { font-size: 1.05rem; font-weight: 400; }
+
+    .track-artist {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--mid);
+      margin-top: 0.1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp 0.5s ease both; }
+    section:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+    section:nth-child(2) { animation: fadeUp 0.5s 0.2s ease both; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="issue-label">Issue 001 &nbsp;·&nbsp; March 2026</p>
+    <h1><em>maria's</em> monthly</h1>
+  </header>
+
+  <main>
+
+    <!-- SECTION 1 -->
+    <section>
+      <p class="section-number">01</p>
+      <h2>what i did <em>this month</em></h2>
+
+      <div class="body-text">
+        <!-- EDIT: replace with your update -->
+        <p>Write your update here. Tell your friends what you've been up to — where you went, what happened, how you felt about it.</p>
+        <p>Add as many paragraphs as you need.</p>
+      </div>
+
+      <!--
+        SLIDESHOW
+        To add photos and captions, edit the slides array in the <script> at the bottom.
+        Each slide looks like: { src: 'photos/yourphoto.jpg', caption: 'your caption here' }
+        Put your photos in a /photos folder next to this file.
+      -->
+      <div class="slideshow" id="slideshow">
+        <div class="slide-track" id="slide-track">
+          <!-- slides injected by JS -->
+        </div>
+        <p class="slide-caption" id="slide-caption"></p>
+        <div class="slide-controls">
+          <button class="slide-btn" id="prev-btn" onclick="changeSlide(-1)">&#8592; prev</button>
+          <span class="slide-counter" id="slide-counter"></span>
+          <button class="slide-btn" id="next-btn" onclick="changeSlide(1)">next &#8594;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+      <p class="section-number">02</p>
+      <h2>this month's <em>playlist</em></h2>
+
+      <a class="spotify-btn" href="https://open.spotify.com/playlist/43m6imcU7ybFVVV0igI9ws?si=f4b2cc8964a143dc" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+        open in spotify
+      </a>
+
+      <!-- EDIT: replace Song Title / Artist Name with your actual tracks -->
+      <ul class="playlist">
+        <li>
+          <span class="track-num">01</span>
+          <div class="track-info">
+            <div class="track-title">Song Title</div>
+            <div class="track-artist">Artist Name</div>
+          </div>
+        </li>
+        <li>
+          <span class="track-num">02</span>
+          <div class="track-info">
+            <div class="track-title">Song Title</div>
+            <div class="track-artist">Artist Name</div>
+          </div>
+        </li>
+        <li>
+          <span class="track-num">03</span>
+          <div class="track-info">
+            <div class="track-title">Song Title</div>
+            <div class="track-artist">Artist Name</div>
+          </div>
+        </li>
+        <li>
+          <span class="track-num">04</span>
+          <div class="track-info">
+            <div class="track-title">Song Title</div>
+            <div class="track-artist">Artist Name</div>
+          </div>
+        </li>
+        <li>
+          <span class="track-num">05</span>
+          <div class="track-info">
+            <div class="track-title">Song Title</div>
+            <div class="track-artist">Artist Name</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>maria's monthly &nbsp;·&nbsp; march 2026 &nbsp;·&nbsp; for friends only</p>
+    <p style="margin-top: 1rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 300; color: var(--mid); text-transform: none; letter-spacing: 0; line-height: 1.6; max-width: 480px;">If you don't want to keep receiving these, please block this email address. I only use it for the newsletter; you won't be renouncing your friendship with me. Promise!</p>
+  </footer>
+
+  <script>
+    // ✏️ CHANGE PASSWORD each month
+    const PASSWORD = 'venezuelabaseballchampions';
+
+    // ✏️ EDIT SLIDES: add as many as you want
+    // { src: 'photos/yourphoto.jpg', caption: 'your caption' }
+    // Leave caption as '' if you don't want one for that photo
+    const slides = [
+      { src: '', caption: 'caption one' },
+      { src: '', caption: 'caption two' },
+      { src: '', caption: 'caption three' },
+      { src: '', caption: 'caption four' },
+      { src: '', caption: 'caption five' },
+    ];
+
+    // PASSWORD
+    (function() {
+      const key = 'mm_march26_auth';
+      if (sessionStorage.getItem(key) === 'yes') return;
+      document.body.style.display = 'none';
+
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed; inset: 0; background: #f7f5f2;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 1.2rem; z-index: 9999;
+        font-family: 'DM Mono', monospace;
+      `;
+      overlay.innerHTML = `
+        <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#7a7870;">maria's monthly</p>
+        <input id="pw-input" type="password" placeholder="password"
+          style="border:none;border-bottom:1px solid #c9b99a;background:transparent;
+                 font-family:'DM Mono',monospace;font-size:0.85rem;padding:0.4rem 0.2rem;
+                 width:220px;outline:none;text-align:center;color:#1a1a18;letter-spacing:0.05em;">
+        <p id="pw-error" style="font-size:0.65rem;color:#c9b99a;letter-spacing:0.1em;opacity:0;">try again</p>
+      `;
+      document.body.appendChild(overlay);
+      document.body.style.display = '';
+
+      const input = overlay.querySelector('#pw-input');
+      const error = overlay.querySelector('#pw-error');
+      input.focus();
+
+      input.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        if (input.value === PASSWORD) {
+          sessionStorage.setItem(key, 'yes');
+          overlay.remove();
+        } else {
+          error.style.opacity = '1';
+          input.value = '';
+          input.focus();
+        }
+      });
+    })();
+
+    // SLIDESHOW
+    let current = 0;
+    const track = document.getElementById('slide-track');
+    const caption = document.getElementById('slide-caption');
+    const counter = document.getElementById('slide-counter');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Build slides
+    slides.forEach((s, i) => {
+      const div = document.createElement('div');
+      div.className = 'slide' + (i === 0 ? ' active' : '');
+      if (s.src) {
+        const img = document.createElement('img');
+        img.src = s.src;
+        img.alt = s.caption || '';
+        div.appendChild(img);
+      } else {
+        div.innerHTML = '<div class="slide-placeholder"><span>photo</span></div>';
+      }
+      track.appendChild(div);
+    });
+
+    function updateSlide() {
+      document.querySelectorAll('.slide').forEach((s, i) => {
+        s.classList.toggle('active', i === current);
+      });
+      caption.textContent = slides[current].caption || '';
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+    }
+
+    function changeSlide(dir) {
+      current = Math.max(0, Math.min(slides.length - 1, current + dir));
+      updateSlide();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+
+    updateSlide();
+  </script>
+
+</body>
+</html>
