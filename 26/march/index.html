@@ -96,20 +96,74 @@
 
     .body-text p + p { margin-top: 1em; }
 
+    /* CENTERED SECTIONS */
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     /* SLIDESHOW */
     .slideshow { margin-top: 2.5rem; }
 
-    .slide-track {
-      background: var(--rule);
+    /* FRAME */
+    .slideshow-frame {
+      position: relative;
+      padding: 10px;
     }
 
-    .slide {
-      display: none;
+    .slideshow-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 22px; height: 22px;
+      border-top: 1px solid var(--accent);
+      border-left: 1px solid var(--accent);
+      opacity: 0.85;
     }
 
-    .slide.active {
-      display: block;
+    .slideshow-frame-inner {
+      position: relative;
     }
+
+    .slideshow-frame-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 22px; height: 22px;
+      border-top: 1px solid var(--accent);
+      border-right: 1px solid var(--accent);
+      opacity: 0.85;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slideshow-frame-inner::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 22px; height: 22px;
+      border-bottom: 1px solid var(--accent);
+      border-left: 1px solid var(--accent);
+      opacity: 0.85;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slideshow-frame-br {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 22px; height: 22px;
+      border-bottom: 1px solid var(--accent);
+      border-right: 1px solid var(--accent);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .slide-track { background: var(--rule); }
+    .slide { display: none; }
+    .slide.active { display: block; }
 
     .slide img {
       width: 100%;
@@ -189,11 +243,10 @@
     }
 
     .spotify-btn:hover { border-color: var(--accent); background: #fff; }
-
     .spotify-btn svg { width: 14px; height: 14px; fill: #1DB954; flex-shrink: 0; }
 
     /* RECOMMENDATIONS */
-    .rec-list { list-style: none; margin-top: 0.5rem; }
+    .rec-list { list-style: none; margin-top: 0.5rem; width: 100%; }
 
     .rec-list li {
       padding: 1.1rem 0;
@@ -225,6 +278,25 @@
       color: var(--mid);
     }
 
+    /* QUESTION SECTION */
+    .question-text {
+      font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 460px;
+    }
+
+    .question-note {
+      margin-top: 1.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--mid);
+      letter-spacing: 0.03em;
+    }
+
     /* FOOTER */
     footer {
       max-width: 680px;
@@ -233,6 +305,8 @@
       border-top: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 1rem;
     }
 
@@ -263,6 +337,7 @@
     section:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
     section:nth-child(2) { animation: fadeUp 0.5s 0.2s ease both; }
     section:nth-child(3) { animation: fadeUp 0.5s 0.3s ease both; }
+    section:nth-child(4) { animation: fadeUp 0.5s 0.4s ease both; }
   </style>
 </head>
 <body>
@@ -283,9 +358,9 @@
         <p>1. Worked out a lot. I am almost as strong as I was in 2023! It feels amazing. It also means I'm eating a crazy amount of food! Also, all of my gym accessories are BRIGHT pink, as God intended.</p>
         <p>2. Tried rope climbing (fun!) and quit climbing. I don't like it when I go by myself. It's scary and really expensive. I tried workout classes, which I enjoy, but nothing hits like weightlifting. The solution might be to keep lifting and running, and replace the rest for friends and creative time.</p>
         <p>3. Went to a Broadway in Boston show: Suffs, about the US suffragists. Very cool!</p>
-        <p>4. Went to my first NBA game, Celtics vs. Timberwolves. I got to see Jason Tatum and Jalen Brown and may have developed a crush on both of them. </p>
+        <p>4. Went to my first NBA game, Celtics vs. Timberwolves. I got to see Jayson Tatum and Jaylen Brown and may have developed a crush on both of them.</p>
         <p>5. Went to <em>coffeeshop day</em> at my friend's house (so cool!) and convinced someone to ditch buying a new phone for an Apple Watch with cellular. They opened up my eyes to how <em>my</em> watch can further separate me from my phone. I am now tempted to buy a watch with cellular so I can leave my phone at home.</p>
-        <p>6. Wrote my <a href="https://substack.com/@mariazambranodavila?utm_campaign=profile&utm_medium=profile-page" target="_blank">first two Substack articles</a>. Please, read them? They're special to me and I'm really excited to develop a new hobby. </p>
+        <p>6. Wrote my <a href="https://substack.com/@mariazambranodavila?utm_campaign=profile&utm_medium=profile-page" target="_blank">first two Substack articles</a>. Please, read them? They're special to me and I'm really excited to develop a new hobby.</p>
         <p>7. I got a Massachusetts ID, which means… LATIN CLUB ERA COMING SOON!! CATCH ME ON THE DANCEFLOOR.</p>
         <p>8. I'm finding a niche in my research that I'm genuinely excited about. Yayyyy. I've started to use my assignments to go deeper into the AI systems being implemented (or failing to be so) in Latin American bureaucracies. There's interesting stuff happening, loaded with lots of conflicting interests and power dynamics.</p>
         <p>9. Venezuela became BASEBALL WORLD CHAMPION!!! <em>...We're so back</em>.</p>
@@ -294,8 +369,11 @@
       </div>
 
       <div class="slideshow" id="slideshow">
-        <div class="slide-track" id="slide-track">
-          <!-- slides injected by JS -->
+        <div class="slideshow-frame">
+          <div class="slideshow-frame-inner">
+            <div class="slide-track" id="slide-track"></div>
+            <div class="slideshow-frame-br"></div>
+          </div>
         </div>
         <p class="slide-caption" id="slide-caption"></p>
         <div class="slide-controls">
@@ -307,7 +385,7 @@
     </section>
 
     <!-- SECTION 2 -->
-    <section>
+    <section class="centered">
       <p class="section-number">02</p>
       <h2>this month's <em>playlist</em></h2>
 
@@ -324,12 +402,6 @@
       <p class="section-number">03</p>
       <h2><em>recommendations</em></h2>
 
-      <!--
-        ✏️ EDIT RECOMMENDATIONS
-        Each item has a tag (e.g. book / film / restaurant / app / article),
-        a title, and an optional short description.
-        Duplicate a <li> block to add more.
-      -->
       <ul class="rec-list">
         <li>
           <p class="rec-tag">Digital</p>
@@ -349,6 +421,16 @@
       </ul>
     </section>
 
+    <!-- SECTION 4 -->
+    <section class="centered">
+      <p class="section-number">04</p>
+      <h2>a question i have <em>for you</em></h2>
+
+      <!-- ✏️ EDIT QUESTION each month -->
+      <p class="question-text">What are your go-to snacks?</p>
+      <p class="question-note">This gym bro hunger is no joke</p>
+    </section>
+
   </main>
 
   <footer>
@@ -360,9 +442,7 @@
     // ✏️ CHANGE PASSWORD each month
     const PASSWORD = 'venezuelabaseballchampions';
 
-    // ✏️ EDIT SLIDES: add as many as you want
-    // { src: 'yourphoto.jpg', caption: 'your caption' }
-    // Leave caption as '' if you don't want one for that photo
+    // ✏️ EDIT SLIDES
     const slides = [
       { src: 'brightpink.jpeg', caption: 'bright pink!' },
       { src: 'celtics.jpeg',    caption: 'first NBA game' },
@@ -371,7 +451,7 @@
       { src: 'muscles.jpeg',    caption: 'MUSCLESSSS' },
     ];
 
-    // PASSWORD
+    // PASSWORD GATE
     (function() {
       const key = 'mm_march26_auth';
       if (sessionStorage.getItem(key) === 'yes') return;
