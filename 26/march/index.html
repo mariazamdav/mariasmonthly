@@ -110,56 +110,22 @@
     /* FRAME */
     .slideshow-frame {
       position: relative;
-      padding: 10px;
-    }
-
-    .slideshow-frame::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 22px; height: 22px;
-      border-top: 1px solid var(--accent);
-      border-left: 1px solid var(--accent);
-      opacity: 0.85;
+      padding: 16px;
+      background: #faf9f7;
+      box-shadow: 0 0 0 1px var(--rule), 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .slideshow-frame-inner {
       position: relative;
+      outline: 1px solid var(--rule);
+      outline-offset: -1px;
     }
 
-    .slideshow-frame-inner::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 22px; height: 22px;
-      border-top: 1px solid var(--accent);
-      border-right: 1px solid var(--accent);
-      opacity: 0.85;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .slideshow-frame-inner::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 22px; height: 22px;
-      border-bottom: 1px solid var(--accent);
-      border-left: 1px solid var(--accent);
-      opacity: 0.85;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .slideshow-frame-br {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 22px; height: 22px;
-      border-bottom: 1px solid var(--accent);
-      border-right: 1px solid var(--accent);
-      opacity: 0.85;
-      pointer-events: none;
-    }
+    .slideshow-frame::before,
+    .slideshow-frame::after,
+    .slideshow-frame-inner::before,
+    .slideshow-frame-inner::after,
+    .slideshow-frame-br { display: none; }
 
     .slide-track { background: var(--rule); }
     .slide { display: none; }
@@ -427,8 +393,8 @@
       <h2>a question i have <em>for you</em></h2>
 
       <!-- ✏️ EDIT QUESTION each month -->
-      <p class="question-text">What are your go-to snacks?</p>
-      <p class="question-note">This gym bro hunger is no joke</p>
+      <p class="question-text">If you could relive one moment from the past year, what would it be?</p>
+      <p class="question-note">reply to this email — i read everything</p>
     </section>
 
   </main>
