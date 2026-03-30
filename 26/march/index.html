@@ -293,6 +293,93 @@
       letter-spacing: 0.03em;
     }
 
+    /* REPLY BUBBLE */
+    .reply-wrap {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .reply-bubble {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 18px 18px 4px 18px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .reply-name {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      padding: 0;
+    }
+
+    .reply-name::placeholder { color: #bbb8b3; }
+
+    .reply-textarea {
+      width: 100%;
+      min-height: 72px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .reply-textarea::placeholder { color: #bbb8b3; }
+
+    .reply-divider {
+      height: 1px;
+      background: var(--rule);
+      width: 100%;
+    }
+
+    .reply-send {
+      align-self: flex-end;
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      border-radius: 12px;
+    }
+
+    .reply-send:hover { border-color: var(--accent); background: var(--bg); }
+
+    .reply-sent {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .reply-sent.visible { opacity: 1; }
+
     /* FOOTER */
     footer {
       max-width: 680px;
@@ -442,6 +529,17 @@
       <!-- ✏️ EDIT QUESTION each month -->
       <p class="question-text">What are your go-to snacks?</p>
       <p class="question-note">This gym bro hunger is no joke</p>
+
+      <div class="reply-wrap">
+        <div class="reply-bubble">
+          <input class="reply-name" id="reply-name" type="text" placeholder="your name" autocomplete="off">
+          <div class="reply-divider"></div>
+          <textarea class="reply-textarea" id="reply-text" placeholder="type your answer here..."></textarea>
+          <div class="reply-divider"></div>
+          <button class="reply-send" onclick="sendReply()">send ↗</button>
+        </div>
+        <p class="reply-sent" id="reply-sent">opening your email app ✓</p>
+      </div>
     </section>
 
   </main>
@@ -505,6 +603,18 @@
         }
       });
     })();
+
+    // REPLY
+    function sendReply() {
+      const name = document.getElementById('reply-name').value.trim();
+      const text = document.getElementById('reply-text').value.trim();
+      if (!text) return;
+      const from = name ? `from ${name}` : 'anonymous';
+      const subject = encodeURIComponent(`maria's monthly — march 2026: snacks (${from})`);
+      const body = encodeURIComponent(text);
+      window.location.href = `mailto:mariasmonthly@gmail.com?subject=${subject}&body=${body}`;
+      document.getElementById('reply-sent').classList.add('visible');
+    }
 
     // SLIDESHOW
     let current = 0;
