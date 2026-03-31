@@ -161,6 +161,7 @@
       font-weight: 300;
       color: var(--mid);
       font-style: italic;
+      text-align: center;
     }
 
     .slide-controls {
@@ -425,29 +426,12 @@
     section:nth-child(6) { animation: fadeUp 0.5s 0.6s ease both; }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      .body-text {
-        font-size: 0.9rem;
-      }
-
-      header {
-        padding: 2rem 1.2rem 1.5rem;
-      }
-
-      main {
-        padding: 0 1.2rem;
-      }
-
-      section {
-        padding: 2rem 0;
-      }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      .body-text { font-size: 0.9rem; }
+      header { padding: 2rem 1.2rem 1.5rem; }
+      main { padding: 0 1.2rem; }
+      section { padding: 2rem 0; }
     }
   </style>
 </head>
@@ -564,7 +548,7 @@
           <div class="reply-divider"></div>
           <button class="reply-send" onclick="sendReply()">send ↗</button>
         </div>
-        <p class="reply-sent" id="reply-sent">opening your email app ✓</p>
+        <p class="reply-sent" id="reply-sent">sent ✓</p>
       </div>
     </section>
 
