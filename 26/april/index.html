@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+  <title>maria's monthly — april 26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --ink: #1a1a18;
+      --mid: #7a7870;
+      --accent: #c9b99a;
+      --rule: #e2ddd7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      min-height: 100vh;
+      padding: 0 0 6rem;
+    }
+
+    /* HEADER */
+    header {
+      padding: 4rem 2rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .issue-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em { font-style: italic; font-weight: 300; }
+
+    /* MAIN */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 em { font-style: italic; }
+
+    .body-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: var(--ink);
+      max-width: 580px;
+    }
+
+    .body-text p + p { margin-top: 1em; }
+
+    .body-text a {
+      color: #d4728a;
+      text-decoration: none;
+    }
+
+    .body-text a:hover { text-decoration: underline; }
+
+    /* CENTERED SECTIONS */
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* SPOTIFY BUTTONS */
+    .spotify-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: 1.4rem;
+    }
+
+    .spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 1.2rem;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .spotify-btn:hover { border-color: var(--accent); background: #fff; }
+    .spotify-btn svg { width: 14px; height: 14px; fill: #1DB954; flex-shrink: 0; }
+
+    .spotify-btn-label {
+      flex: 1;
+      text-align: left;
+    }
+
+    /* DIVIDER */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+
+    /* ALBUM SECTION */
+    .album-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+    .album-col-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .album-list {
+      list-style: none;
+    }
+
+    .album-list li {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .album-list li:last-child { border-bottom: none; }
+
+    .album-artist {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      margin-top: 0.1rem;
+      text-transform: uppercase;
+    }
+
+    .section-note {
+      margin-top: 1.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 440px;
+      font-style: italic;
+    }
+
+    /* QUESTION SECTION */
+    .question-text {
+      font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 520px;
+    }
+
+    .question-note {
+      margin-top: 1.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--mid);
+      letter-spacing: 0.03em;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* REPLY BUBBLE */
+    .reply-wrap {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .reply-bubble {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 18px 18px 4px 18px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .reply-name {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      padding: 0;
+    }
+
+    .reply-name::placeholder { color: #bbb8b3; }
+
+    .reply-textarea {
+      width: 100%;
+      min-height: 72px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .reply-textarea::placeholder { color: #bbb8b3; }
+
+    .reply-divider {
+      height: 1px;
+      background: var(--rule);
+      width: 100%;
+    }
+
+    .reply-send {
+      align-self: flex-end;
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      border-radius: 12px;
+    }
+
+    .reply-send:hover { border-color: var(--accent); background: var(--bg); }
+
+    .reply-sent {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .reply-sent.visible { opacity: 1; }
+
+    /* FOOTER */
+    footer {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      padding: 2rem 2rem 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .footer-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp 0.5s ease both; }
+    section:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+    section:nth-child(2) { animation: fadeUp 0.5s 0.2s ease both; }
+    section:nth-child(3) { animation: fadeUp 0.5s 0.3s ease both; }
+    section:nth-child(4) { animation: fadeUp 0.5s 0.4s ease both; }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      .body-text { font-size: 0.9rem; }
+      header { padding: 2rem 1.2rem 1.5rem; }
+      main { padding: 0 1.2rem; }
+      section { padding: 2rem 0; }
+      .album-columns { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="issue-label">Issue 002 &nbsp;·&nbsp; April 2026</p>
+    <h1><em>maria's</em> monthly</h1>
+  </header>
+
+  <main>
+
+    <!-- SECTION 1: RECAP -->
+    <section>
+      <p class="section-number">01</p>
+      <h2><em>recap</em> of my month</h2>
+
+      <div class="body-text">
+        <p>1. Went to the club, as promised, and had an amazing time. Latin clubs remain PEAK.</p>
+        <p>2. Went to a women's hockey game, Boston vs. Montreal! I had the best rum and coke of my life. It was the first time the Boston team played in Boston's famous stadium, TD Garden. That was awesome. Unfortunately, they lost, boohoo.</p>
+        <p>3. Did my first and second PhD research interviews. I'm so excited to embed myself in useful and interesting networks.</p>
+        <p>4. Watched <em>The Drama</em>. I hadn't found a movie so engaging and creative in a long time. I'm still not exactly sure what to do with the moral aftermess it leaves.</p>
+        <p>5. Tried drinking. I mean it seriously when I say I tried; many drinks, at many places, with different people. I didn't let myself go too far any time, but I gave it a fair shot. And then I sort of decided that I fall on the "dislike" end of the spectrum. I don't want to be deterministic, but I think I'll implement an "avoid" policy.</p>
+        <p>6. Gave my first research presentations and got feedback from my peers. It was nice and cozy, and I felt validated. I really can't wait to do research full time.</p>
+        <p>7. Figured out the hunger situation. I am no longer hungry. In fact, I somehow tilted the scale toward feeling too full all the time. I'm dialing back again.</p>
+        <p>8. Figured out I was going too hard at the gym because my form was suffering and I needed super long rests. I left my ego behind and lowered the weight for a few weeks. I have started to up it bit by bit.</p>
+        <p>9. From the Apple Watch research, I changed mobile companies to a cheaper one, but I decided against buying an Apple Watch to get away from my phone. I went back to my phone and scrolling reels and I decided, again, that I don't like it.</p>
+        <p>10. Went on a perfectly okay date with a perfectly okay man (who is leaving for the summer so that's paused). I realized recently I haven't thought about it since? I'm not used to (romantic) things being okay and not caring about it?</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MUSIC -->
+    <section class="centered">
+      <p class="section-number">02</p>
+      <h2>this month's <em>playlists</em></h2>
+
+      <div class="body-text" style="margin-bottom: 2rem; text-align: center;">
+        <p>New playlists entering the Mariaverse:</p>
+      </div>
+
+      <div class="spotify-btn-group">
+        <a class="spotify-btn" href="https://open.spotify.com/playlist/22rj6rnU4iaZw9P287fMiO?si=cc9430085da14b16" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          <span class="spotify-btn-label">songs that say my name</span>
+        </a>
+        <a class="spotify-btn" href="https://open.spotify.com/playlist/7eMPAqiKP7rFzzbNfE4X22?si=55c98c2719fd4b77" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          <span class="spotify-btn-label">songs that remind me of my romantic past</span>
+        </a>
+        <a class="spotify-btn" href="https://open.spotify.com/playlist/30VpFYoxyA2kzi0NiQOKzn?si=180f1b24194c4409" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          <span class="spotify-btn-label">april 26</span>
+        </a>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="body-text" style="margin-bottom: 2rem;">
+        <p>Unknown fact about me: I love music albums. I love being able to play the same songs in the same order, and have them be coherent but still unique.</p>
+        <p>So I'm gifting you these two lists, in no particular order:</p>
+      </div>
+
+      <div class="album-columns">
+        <div>
+          <p class="album-col-title">Albums I can listen to top to bottom</p>
+          <ul class="album-list">
+            <li>Son of Spergy<span class="album-artist">Daniel Caesar</span></li>
+            <li>HIT ME HARD AND SOFT<span class="album-artist">Billie Eilish</span></li>
+            <li>¿Dónde Es El After?<span class="album-artist">Rawayana</span></li>
+            <li>TODOS LOS DÍAS TODO EL DÍA<span class="album-artist">Latin Mafia</span></li>
+            <li>DeBÍ TiRAR MáS FOToS<span class="album-artist">Bad Bunny</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="album-col-title">Albums I could listen to top to bottom when they came out</p>
+          <ul class="album-list">
+            <li>Unorthodox Jukebox<span class="album-artist">Bruno Mars</span></li>
+            <li>Happier Than Ever<span class="album-artist">Billie Eilish</span></li>
+            <li>¿Quién trae las cornetas?<span class="album-artist">Rawayana</span></li>
+            <li>El Día Es Hoy<span class="album-artist">Viniloversus</span></li>
+            <li>#7DJ (7 Días en Jamaica)<span class="album-artist">Maluma</span></li>
+            <li>Un Verano Sin Ti<span class="album-artist">Bad Bunny</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: QUESTION -->
+    <section class="centered">
+      <p class="section-number">03</p>
+      <h2>a question i have <em>for you</em></h2>
+
+      <p class="question-text">Let's set people up. Let's use our networks.</p>
+      <p class="question-note">If you're single, send me what you're looking for. If you're partnered, what were you looking for and how did you know you found it when you did? I'm happy to send everyone what I'm looking for in case you're the link between me and my future husband.</p>
+
+      <div class="reply-wrap">
+        <div class="reply-bubble">
+          <input class="reply-name" id="reply-name" type="text" placeholder="your name" autocomplete="off">
+          <div class="reply-divider"></div>
+          <textarea class="reply-textarea" id="reply-text" placeholder="type your answer here..."></textarea>
+          <div class="reply-divider"></div>
+          <button class="reply-send" onclick="sendReply()">send ↗</button>
+        </div>
+        <p class="reply-sent" id="reply-sent">sent ✓</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="footer-label">maria's monthly &nbsp;·&nbsp; april 2026 &nbsp;·&nbsp; for friends</p>
+  </footer>
+
+  <script>
+    const PASSWORD = 'summerneowplease';
+
+    // PASSWORD GATE
+    (function() {
+      const key = 'mm_april26_auth';
+      if (sessionStorage.getItem(key) === 'yes') return;
+      document.body.style.display = 'none';
+
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed; inset: 0; background: #f7f5f2;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 1.2rem; z-index: 9999;
+        font-family: 'DM Mono', monospace;
+      `;
+      overlay.innerHTML = `
+        <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#7a7870;">maria's monthly</p>
+        <input id="pw-input" type="password" placeholder="password"
+          style="border:none;border-bottom:1px solid #c9b99a;background:transparent;
+                 font-family:'DM Mono',monospace;font-size:0.85rem;padding:0.4rem 0.2rem;
+                 width:220px;outline:none;text-align:center;color:#1a1a18;letter-spacing:0.05em;">
+        <p id="pw-error" style="font-size:0.65rem;color:#c9b99a;letter-spacing:0.1em;opacity:0;">try again</p>
+      `;
+      document.body.appendChild(overlay);
+      document.body.style.display = '';
+
+      const input = overlay.querySelector('#pw-input');
+      const error = overlay.querySelector('#pw-error');
+      input.focus();
+
+      input.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        if (input.value === PASSWORD) {
+          sessionStorage.setItem(key, 'yes');
+          overlay.remove();
+        } else {
+          error.style.opacity = '1';
+          input.value = '';
+          input.focus();
+        }
+      });
+    })();
+
+    // REPLY
+    async function sendReply() {
+      const name = document.getElementById('reply-name').value.trim();
+      const text = document.getElementById('reply-text').value.trim();
+      if (!text) return;
+
+      const btn = document.querySelector('.reply-send');
+      btn.disabled = true;
+      btn.textContent = 'sending...';
+
+      try {
+        const res = await fetch('https://formspree.io/f/xkoprzaq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name: name || 'anonymous', message: text })
+        });
+
+        if (res.ok) {
+          document.getElementById('reply-sent').textContent = 'sent ✓';
+          document.getElementById('reply-sent').classList.add('visible');
+          document.getElementById('reply-name').value = '';
+          document.getElementById('reply-text').value = '';
+          btn.textContent = 'sent ✓';
+        } else {
+          btn.textContent = 'try again ↗';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'try again ↗';
+        btn.disabled = false;
+      }
+    }
+  </script>
+
+</body>
+</html>
